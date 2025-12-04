@@ -1,0 +1,18 @@
+# Ignorer le gros dataset
+recipes.csv
+*.csv
+data/*.csv
+
+# Ignorer fichiers temporaires Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorer environnements virtuels
+venv/
+.env/
+*.env
+
+# Ignorer fichiers Windows
+Thumbs.db
