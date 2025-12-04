@@ -45,7 +45,7 @@ st.markdown("""
 def load_data():
     return load_recipes()
 
-df = load_data()
+
 
 # STYLE GLOBAL
 st.markdown(
@@ -82,7 +82,9 @@ page = st.sidebar.radio(
     ("Home", "Recipes", "Overall analysis")
 )
 
-
+df = None
+if page in ("Recipes", "Overall analysis") : 
+    df = load_data()
 # ACCUEIL
 
 
