@@ -4,7 +4,7 @@ from nettoyage import clean_recipe_df
 from forme_list import apply_r_vectors, format_time_columns, clean_ingredients_column
 
 
-CSV_URL="https://github.com/Justme-G/Recipe_Finder/releases/download/v1.0.0/recipes.csv"
+CSV_URL="https://github.com/Justme-G/Recipe_Finder/releases/download/v1.1.0/recipes_small.csv"
 
 @st.cache_data
 def load_recipes() -> pd.DataFrame:
