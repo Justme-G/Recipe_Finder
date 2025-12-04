@@ -44,7 +44,8 @@ st.markdown("""
 @st.cache_data
 def load_data():
     return load_recipes()
-
+    
+df = load_data()
 
 
 # STYLE GLOBAL
@@ -83,9 +84,7 @@ page = st.sidebar.radio(
     label_visibility="collapsed",
 )
 
-df = None
-if page in ("Recipes", "Overall analysis") : 
-    df = load_data()
+
 # ACCUEIL
 
 
