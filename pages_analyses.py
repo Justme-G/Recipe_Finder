@@ -276,54 +276,59 @@ def render_global_analysis_page(df):
         .mean(numeric_only=True)
         .dropna()
     )
-
-    all_cats = sorted(nutri_mean.index.tolist())
-
-    selected_cats = st.multiselect(
-        "Select categories to compare (Maximum 5)",
-        options=all_cats,
-        default=[],
-        max_selections=5,
-    )
-
-    if not selected_cats:
-        st.info("Select at least one category.")
+    if nutri_mean.empty:
+        st.warning("No nutritional data available to build this chart.")
     else:
-        
-        mat = nutri_mean.loc[selected_cats, nutri_cols]
+        all_cats = sorted(nutri_mean.index.tolist())
 
+        selected_cats = st.multiselect(
+            "Select categories to compare (Maximum 5)",
+            options=all_cats,
+            default=[],
+            max_selections=5,
+        )
+
+        if not selected_cats:
+            st.info("Select at least one category.")
+        else:
+        
+            mat = nutri_mean.loc[selected_cats, nutri_cols]
+
+            if mat.empty:
+                st.warning("No nutritional data for the selected categories.")
+            else:
        
-        mat_display = mat.round(0)
+                mat_display = mat.round(0)
 
         
-        fig = px.imshow(
-            mat,
-            x=nutri_cols,
-            y=selected_cats,
-            color_continuous_scale=["#b7e4c7", "#74c69d", "#40916c"],
-            aspect="auto",
-            text_auto=True, 
-            labels=dict(x="Metric", y="Category", color="Value"),
-            title="Average nutritional values by category",
-        )
+                fig = px.imshow(
+                    mat_display,
+                    x=nutri_cols,
+                    y=selected_cats,
+                    color_continuous_scale=["#b7e4c7", "#74c69d", "#40916c"],
+                    aspect="auto",
+                    text_auto=True, 
+                    labels=dict(x="Metric", y="Category", color="Value"),
+                    title="Average nutritional values by category",
+                )
 
-        fig.update_layout(
-            title_x=0.4,
-            plot_bgcolor="#5e8667",
-            paper_bgcolor="#5e8667",
-            font_color="white",
-            coloraxis_colorbar_title="Real value",
-            margin=dict(l=120, r=40, t=60, b=40),
-        )
+                fig.update_layout(
+                    title_x=0.4,
+                    plot_bgcolor="#5e8667",
+                    paper_bgcolor="#5e8667",
+                    font_color="white",
+                    coloraxis_colorbar_title="Real value",
+                    margin=dict(l=120, r=40, t=60, b=40),
+                )
 
         
-        fig.data[0].text = mat_display.values
-        fig.data[0].texttemplate = "%{text}"
+                fig.data[0].text = mat_display.values
+                fig.data[0].texttemplate = "%{text}"
 
-        st.plotly_chart(fig, width='stretch')
-        st.markdown("<p style='text-align:center; color:#ffffff; opacity:0.8;'>Here, all values are given in grams.</p>",
-            unsafe_allow_html=True
-        )
+                st.plotly_chart(fig, width='stretch')
+                st.markdown("<p style='text-align:center; color:#ffffff; opacity:0.8;'>Here, all values are given in grams.</p>",
+                    unsafe_allow_html=True
+                )
 
     st.markdown("---")
 
