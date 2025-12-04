@@ -78,8 +78,9 @@ st.sidebar.markdown(
 )
 
 page = st.sidebar.radio(
-    "",
-    ("Home", "Recipes", "Overall analysis")
+    "Navigation",
+    ("Home", "Recipes", "Overall analysis"),
+    label_visibility="collapsed",
 )
 
 df = None
