@@ -255,6 +255,10 @@ def render_global_analysis_page(df):
                 font_color="white",
                 coloraxis_colorbar_title="Total time (min)",
             )
+            fig.update_yaxes(constrain='domain',
+                            range=[data["rating"].min() - 0.1,data["rating"].max() + 0.1])
+
+
             st.plotly_chart(fig, width='stretch')
             st.markdown("<p style='text-align:center; color:#ffffff; opacity:0.8;'>The size of the bubbles represents the number of reviews.</p>",
             unsafe_allow_html=True
