@@ -170,7 +170,7 @@ if page == "Home":
     st.markdown("""
     <br><hr>
     <p style='text-align:center; color:#444;'>
-    Made with ❤️ using Streamlit — University Project (2025)
+    University Project (2025)
     </p>
     """, unsafe_allow_html=True)
 
