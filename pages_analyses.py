@@ -256,7 +256,7 @@ def render_global_analysis_page(df):
                 coloraxis_colorbar_title="Total time (min)",
             )
             fig.update_yaxes(constrain='domain',
-                            range=[data["rating"].min() - 0.1,data["rating"].max() + 0.1])
+                            range=[data["rating"].min() - 0.2,data["rating"].max() + 0.2])
 
 
             st.plotly_chart(fig, width='stretch')
