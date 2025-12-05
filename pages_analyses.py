@@ -317,7 +317,7 @@ def render_global_analysis_page(df):
                     plot_bgcolor="#5e8667",
                     paper_bgcolor="#5e8667",
                     font_color="white",
-                    coloraxis_colorbar_title="Real value",
+                    coloraxis_colorbar_title="Value",
                     margin=dict(l=120, r=40, t=60, b=40),
                 )
 
