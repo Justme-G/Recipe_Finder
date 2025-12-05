@@ -244,9 +244,8 @@ def render_global_analysis_page(df):
                 hover_data=["category", "reviews", "total_time_min"],
                 title="Popularity vs Calories",
                 color_continuous_scale=["#b7e4c7", "#74c69d", "#4aa87f"],
-            )
-            fig.update_yaxes(range=[0, 5])  
-            
+            ) 
+
             fig.update_layout(
                 xaxis_title="Calories",
                 yaxis_title="Rating",
