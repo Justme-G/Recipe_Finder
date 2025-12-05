@@ -21,7 +21,7 @@ def render_global_analysis_page(df):
     data["n_ingredients"] = data["ingredients"].apply(count_ingredients)
 
 
-    st.header("\U0001F4CA Analyse globale des recettes")
+    st.header("\U0001F4CA Overall analysis of recipes")
 
 
 
