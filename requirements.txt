@@ -1,5 +1,6 @@
-pandas
-numpy
-streamlit
-plotly
-requests 
+pandas>=2.0,<3.1
+numpy>=1.26,<3
+streamlit>=1.31,<2
+plotly>=5.18,<7
+requests>=2.31,<3
+altair>=5,<6
